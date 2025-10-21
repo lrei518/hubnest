@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>栖光集 | 一个安静的角落</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/modern-style.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-section">
+        <a href="#" class="logo">栖光集</a>
+        <p class="logo-subtitle">主打一个白嫖~尽兴~</p>
+      </div>
+
+      <div class="nav-section">
+        <nav class="nav-links">
+          <a href="#"><i class="fas fa-home"></i> 首页</a>
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle" style="display: flex; align-items: center;"><i class="fas fa-cog"></i> 设置</a>
+            <div class="dropdown-menu">
+              <a href="#" id="clearSearchHistory"><i class="fas fa-history"></i> 清除搜索历史</a>
+              <a href="#" id="resetCustomSites"><i class="fas fa-trash-alt"></i> 重置自定义网站</a>
+              <a href="#" id="exportSettings"><i class="fas fa-file-export"></i> 导出设置</a>
+              <a href="#" id="importSettings"><i class="fas fa-file-import"></i> 导入设置</a>
+            </div>
+          </div>
+          <a href="#" id="helpButton"><i class="fas fa-question-circle"></i> 帮助</a>
+          <a href="#" id="favoriteSite"><i class="fas fa-star"></i> 收藏本站</a>
+        </nav>
+      </div>
+
+      <div class="search-section">
+          <div class="search-bar"> <!-- 搜索栏容器，包含输入框和搜索按钮 -->
+            <div class="search-input-container">
+              <div class="search-engine-selector" id="search-engine-selector" style="display: none;">
+                <select class="engine-select">
+                  <option value="baidu">百度</option>
+                  <option value="google">Google</option>
+                  <option value="bing">Bing</option>
+                  <option value="duckduckgo">DuckDuckGo</option>
+                  <option value="qwant">Qwant</option>
+                </select>
+              </div>
+              <input type="text" class="search-input" placeholder="全局搜索..." /> <!-- 搜索输入框，实时过滤卡片 -->
+              <button class="search-btn"></button> <!-- 搜索按钮，点击触发搜索 -->
+            </div>
+            <div class="search-tabs">
+              <span class="search-tab active">站内搜索</span>
+              <span class="search-tab">全网搜索</span>
+            </div>
+          </div>
+          
+
+
+          <button id="theme-toggle" class="theme-btn" title="切换暗黑模式"> <!-- 主题切换按钮，点击切换明暗模式 -->
+          </button>
+        </div>
+        
+
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <ul>
+      <li><a href="#" class="menu-item">首页</a></li>
+      <li><a href="#" class="menu-item">自定义网站</a></li>
+      <li><a href="#" class="menu-item">AI智能</a></li>
+      <li><a href="#" class="menu-item">视频下载</a></li>
+      <li><a href="#单机游戏下载" class="menu-item">单机游戏下载</a></li>
+      <li><a href="#游戏在线玩" class="menu-item">游戏在线玩</a></li>
+      <li><a href="#影视剧下载" class="menu-item">影视剧下载</a></li>
+      <li><a href="#超级工具" class="menu-item">超级工具</a></li>
+      <li><a href="#" class="menu-item">软件下载</a></li>
+      <li><a href="#" class="menu-item">搜索引擎</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 🌟 小众宝藏网站推荐广告栏 -->
+    <section class="featured-sites-banner">
+      <div class="banner-container">
+        <div class="banner-title">
+        本周小众宝藏发现
+      </div>
+        <div class="featured-grid">
+          <a href="https://glitch.com" target="_blank" class="featured-card glitch-card">
+            <div class="featured-icon">
+            </div>
+            <div class="featured-content">
+              <h3>Glitch</h3>
+              <p>🎨 创意编程的乐园，一行代码即可部署全栈应用，社区驱动的代码协作平台</p>
+              <span class="featured-tag">#创意编程 #即时部署</span>
+            </div>
+            <div class="featured-arrow">
+            </div>
+          </a>
+
+          <a href="https://www.are.na" target="_blank" class="featured-card arena-card">
+            <div class="featured-icon">
+            </div>
+            <div class="featured-content">
+              <h3>Are.na</h3>
+              <p>🔍 视觉研究者的秘密武器，无限层级的灵感收藏夹，创意工作者的思维导图</p>
+              <span class="featured-tag">#视觉研究 #灵感收集</span>
+            </div>
+            <div class="featured-arrow">
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI工具 -->
+    <!-- 自定义常用网站 -->
+    <section class="module">
+      <div class="module-header">
+        <h2>自定义常用网站</h2>
+      </div>
+      <div class="card-grid">
+        <!-- 添加网站按钮 -->
+        <div class="add-card" id="addWebsiteCard">
+          <div class="add-icon">+</div>
+          <div class="add-text">添加网站</div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- AI智能 -->
+    <section class="module">
+      <div class="module-title">
+        AI智能
+      </div>
+      <div class="card-grid">
+        <div class="card" data-url="https://deepseek.com" data-id="1" data-logo="deepseek.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/deepseek.png" alt="DeepSeek" class="logo-img" />
+          </div>
+          <div class="card-title">DeepSeek</div>
+          <div class="card-description">国产开源AI助手，支持代码生成、数学推理和创意写作，性能对标GPT-4的免费AI工具</div>
+        </div>
+        <div class="card" data-url="https://qwenchat.com" data-id="2" data-logo="tongyi.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/tongyi.png" alt="通义千问" class="logo-img" />
+          </div>
+          <div class="card-title">通义千问</div>
+          <div class="card-description">阿里巴巴达摩院推出的超大规模语言模型，支持多轮对话、文案创作、逻辑推理等智能服务</div>
+        </div>
+        <div class="card" data-url="https://chat.openai.com" data-id="3" data-logo="chatgpt.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/chatgpt.png" alt="ChatGPT" class="logo-img" />
+          </div>
+          <div class="card-title">ChatGPT</div>
+          <div class="card-description">OpenAI开发的智能对话助手，支持自然语言交互、代码编写、创意写作等多样化任务</div>
+        </div>
+        <div class="card" data-url="https://claude.ai" data-id="4" data-logo="claude.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/claude.png" alt="Claude" class="logo-img" />
+          </div>
+          <div class="card-title">Claude</div>
+          <div class="card-description">Anthropic开发的AI助手，以安全性和有用性著称，擅长长文本分析和复杂推理任务</div>
+        </div>
+        <div class="card" data-url="https://gemini.google.com" data-id="5" data-logo="gemini.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/gemini.png" alt="Gemini" class="logo-img" />
+          </div>
+          <div class="card-title">Gemini</div>
+          <div class="card-description">Google推出的多模态AI模型，支持文本、图像、音频等多种输入输出，具备强大的理解能力</div>
+        </div>
+        <div class="card" data-url="https://grok.com" data-id="6" data-logo="grok.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/grok.png" alt="Grok" class="logo-img" />
+          </div>
+          <div class="card-title">Grok</div>
+          <div class="card-description">xAI开发的智能助手，集成实时信息获取能力，提供最新资讯和深度分析的智能对话</div>
+        </div>
+        <div class="card" data-url="https://ai.qq.com" data-id="7" data-logo="hunyuan.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/hunyuan.png" alt="腾讯AI" class="logo-img" />
+          </div>
+          <div class="card-title">腾讯AI</div>
+          <div class="card-description">腾讯混元大模型，提供智能对话、内容创作、知识问答等全场景AI服务，支持多轮交互</div>
+        </div>
+        <div class="card" data-url="https://doubao.com" data-id="8" data-logo="doubao.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/doubao.png" alt="豆包" class="logo-img" />
+          </div>
+          <div class="card-title">豆包</div>
+          <div class="card-description">字节跳动旗下的AI助手，提供智能问答、写作辅助、英语学习等功能，界面简洁易用</div>
+        </div>
+        <div class="card" data-url="https://metaso.cn/" data-id="9" data-logo="mita.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/mita.png" alt="秘塔AI搜索" class="logo-img" />
+          </div>
+          <div class="card-title">秘塔AI搜索</div>
+          <div class="card-description">专业AI搜索引擎，提供无广告的纯净搜索体验，支持学术文献、技术文档等深度内容检索</div>
+        </div>
+        <div class="card" data-url="https://kimi.com" data-id="10" data-logo="kimi.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/kimi.png" alt="Kimi" class="logo-img" />
+          </div>
+          <div class="card-title">Kimi</div>
+          <div class="card-description">月之暗面科技推出的AI助手，支持超长文本处理，特别适合文档阅读、论文分析等学术场景</div>
+        </div>
+        <div class="card" data-url="https://yiyan.baidu.com" data-id="11" data-logo="wenxinyiyan.png" data-category="AI工具">
+          <div class="card-icon">
+            <img src="assets/logos/wenxinyiyan.png" alt="文心一言" class="logo-img" />
+          </div>
+          <div class="card-title">文心一言</div>
+          <div class="card-description">百度推出的知识增强大语言模型，具备文学创作、商业文案创作、数理逻辑推算等能力</div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- 视频下载 -->
+    <section class="module">
+      <div class="module-title">
+        视频下载
+      </div>
+      <div class="card-grid">
+        <div class="card" data-url="https://xbeibeix.com/api/bilibili/" data-id="31" data-category="视频资源">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/bilibili.ico" alt="贝贝BiliBili" class="logo-img" />
+          </div>
+          <div class="card-title">贝贝BiliBili</div>
+          <div class="card-description">专业的B站视频下载工具，支持多种清晰度选择和批量下载功能</div>
+        </div>
+        <div class="card" data-url="https://www.hotbox.fun/" data-id="32" data-category="视频资源">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/hotbox.ico" alt="Hotbox" class="logo-img" />
+          </div>
+          <div class="card-title">Hotbox</div>
+          <div class="card-description">免费的在线视频解析网站，支持多种平台视频下载</div>
+        </div>
+        <div class="card" data-url="https://tubedown.cn/" data-id="33" data-category="视频资源">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/tubedown.ico" alt="TubeDown" class="logo-img" />
+          </div>
+          <div class="card-title">TubeDown</div>
+          <div class="card-description">专业的YouTube视频下载工具，支持高清视频保存</div>
+        </div>
+        <div class="card" data-url="https://www.onlinevideoconverter.com/" data-id="78" data-category="视频资源">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/onlinevideoconverter.ico" alt="OnlineVideoConverter" class="logo-img" />
+          </div>
+          <div class="card-title">OnlineVideoConverter</div>
+          <div class="card-description">免费的在线视频转换和下载工具</div>
+        </div>
+        <div class="card" data-url="https://www.mediahuman.com/" data-id="79" data-category="视频资源">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/mediahuman.ico" alt="MediaHuman" class="logo-img" />
+          </div>
+          <div class="card-title">MediaHuman</div>
+          <div class="card-description">专业的音频和视频下载工具，支持多种平台</div>
+        </div>
+        <div class="card" data-url="https://www.kedou.life/" data-id="83" data-category="视频资源">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/kedou.ico" alt="蝌蚪视频" class="logo-img" />
+          </div>
+          <div class="card-title">蝌蚪视频</div>
+          <div class="card-description">在线视频解析下载工具，支持多种平台视频下载</div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- 游戏下载 -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          单机游戏下载
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card" data-url="http://flysheep.ysepan.com/" data-id="201" data-category="单机游戏下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/flysheep.ico" alt="FlySheep云盘" class="logo-img" />
+          </div>
+          <div class="card-title">FlySheep云盘</div>
+          <div class="card-description">提供各类单机游戏下载资源的云盘平台</div>
+        </div>
+        <div class="card" data-url="https://www.gamefreer.com/" data-id="202" data-category="单机游戏下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/gamefreer.ico" alt="GameFreer" class="logo-img" />
+          </div>
+          <div class="card-title">GameFreer</div>
+          <div class="card-description">免费游戏下载平台，提供丰富的单机游戏资源</div>
+        </div>
+        <div class="card" data-url="https://www.gamer520.com/" data-id="203" data-category="单机游戏下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/gamer520.ico" alt="GameR520" class="logo-img" />
+          </div>
+          <div class="card-title">GameR520</div>
+          <div class="card-description">专业单机游戏下载网站，提供最新最全的游戏资源</div>
+        </div>
+        <div class="card" data-url="https://www.flysheep6.com/" data-id="204" data-category="单机游戏下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/flysheep6.ico" alt="FlySheep6" class="logo-img" />
+          </div>
+          <div class="card-title">FlySheep6</div>
+          <div class="card-description">FlySheep系列网站，提供高质量单机游戏下载</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 游戏在线玩 -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          游戏在线玩
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card" data-url="https://www.crazygames.com" data-id="82" data-category="游戏在线玩">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/crazygames.ico" alt="CrazyGames" class="logo-img" />
+          </div>
+          <div class="card-title">CrazyGames</div>
+          <div class="card-description">提供大量免费在线游戏的平台，无需下载即可畅玩各种类型的游戏</div>
+        </div>
+        <div class="card" data-url="https://www.ra2web.com" data-id="83" data-category="游戏在线玩">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/ra2web.ico" alt="RA2Web" class="logo-img" />
+          </div>
+          <div class="card-title">RA2Web</div>
+          <div class="card-description">在线玩经典的红色警戒2游戏，重温童年回忆</div>
+        </div>
+        <div class="card" data-url="https://play-cs.com/cs" data-id="84" data-category="游戏在线玩">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/playcs.ico" alt="Play-CS" class="logo-img" />
+          </div>
+          <div class="card-title">Play-CS</div>
+          <div class="card-description">在线玩经典的反恐精英游戏，体验紧张刺激的射击对战</div>
+        </div>
+        <div class="card" data-url="https://www.yikm.net" data-id="85" data-category="游戏在线玩">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/yikm.ico" alt="YIKM" class="logo-img" />
+          </div>
+          <div class="card-title">YIKM</div>
+          <div class="card-description">提供经典Flash游戏在线玩的平台，包含大量怀旧游戏</div>
+        </div>
+        <div class="card" data-url="https://www.dos.lol" data-id="86" data-category="游戏在线玩">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/doslol.ico" alt="DOS.lol" class="logo-img" />
+          </div>
+          <div class="card-title">DOS.lol</div>
+          <div class="card-description">在线玩经典的DOS游戏，体验复古游戏的魅力</div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 影视剧下载 -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          影视剧下载
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card" data-url="https://xunlei8.cc/" data-id="140" data-category="影视剧下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/xunlei8.ico" alt="迅雷电影天堂" class="logo-img" />
+          </div>
+          <div class="card-title">迅雷电影天堂</div>
+          <div class="card-description">提供最新电影高清迅雷下载资源，包含720P、1080P等高清电影下载</div>
+        </div>
+        <div class="card" data-url="https://www.dygod.net/" data-id="141" data-category="影视剧下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/dygod.ico" alt="电影天堂" class="logo-img" />
+          </div>
+          <div class="card-title">电影天堂</div>
+          <div class="card-description">高清电影下载网站，提供高品质电影资源下载，支持多种格式</div>
+        </div>
+        <div class="card" data-url="https://www.dandanzan.me/" data-id="142" data-category="影视剧下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/dandanzan.ico" alt="蛋蛋赞影院" class="logo-img" />
+          </div>
+          <div class="card-title">蛋蛋赞影院</div>
+          <div class="card-description">最新最全高清在线影院，提供电影、电视剧、综艺、动漫等在线观看服务</div>
+        </div>
+        <div class="card" data-url="https://www.seedhub.cc/" data-id="143" data-category="影视剧下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/seedhub.ico" alt="SeedHub" class="logo-img" />
+          </div>
+          <div class="card-title">SeedHub</div>
+          <div class="card-description">影视&动漫分享平台，提供最新影视作品和动漫资源下载</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 超级工具 -->
+    <section class="module">
+      <div class="module-title">
+        超级工具
+      </div>
+      <div class="card-grid">
+        <!-- 格式转换类工具 -->
+        <div class="card" data-url="https://convertio.co/" data-id="145" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/simple-icons-develop/icons/convertio.svg" alt="Convertio" class="logo-img" />
+          </div>
+          <div class="card-title">Convertio</div>
+          <div class="card-description">功能强大的在线文件转换工具，支持超过300种不同格式的文件转换，包括文档、图片、音频、视频等，免费版有100MB文件大小限制</div>
+        </div>
+        <div class="card" data-url="https://smallpdf.com/" data-id="146" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/smallpdf.ico" alt="Smallpdf" class="logo-img" />
+          </div>
+          <div class="card-title">Smallpdf</div>
+          <div class="card-description">非常受欢迎的在线PDF处理工具，提供PDF转换、压缩、编辑、签名等21种工具，一站式解决所有PDF问题，完全免费使用</div>
+        </div>
+        <div class="card" data-url="https://www.ilovepdf.com/" data-id="147" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/ilovepdf.ico" alt="iLovePDF" class="logo-img" />
+          </div>
+          <div class="card-title">iLovePDF</div>
+          <div class="card-description">专业的PDF在线处理工具，支持PDF合并、分割、压缩、转换等操作，提供桌面版与移动版应用，完全免费使用</div>
+        </div>
+        <div class="card" data-url="https://www.aconvert.com/" data-id="148" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/aconvert.ico" alt="Aconvert" class="logo-img" />
+          </div>
+          <div class="card-title">Aconvert</div>
+          <div class="card-description">免费的在线文件转换工具，支持文档、图片、音频、视频等多种格式转换，操作简单易用，免费用户最多可同时转换10个文件，每个文件不超过40MB</div>
+        </div>
+        <div class="card" data-url="https://www.zamzar.com/" data-id="149" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/zamzar.ico" alt="Zamzar" class="logo-img" />
+          </div>
+          <div class="card-title">Zamzar</div>
+          <div class="card-description">历史悠久的在线文件转换工具，支持超过1200种不同格式的文件转换，结果通过邮件返回，免费版有100MB文件大小限制</div>
+        </div>
+        <div class="card" data-url="https://pdf.cn/" data-id="150" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/pdfcn.ico" alt="PDF.cn" class="logo-img" />
+          </div>
+          <div class="card-title">PDF.cn</div>
+          <div class="card-description">免费提供PDF转换成Word、图片、Excel、PPT等多种文件格式互转及PDF压缩、合并和拆分等功能，完全免费使用</div>
+        </div>
+        
+        <!-- 文件处理工具 -->
+        <div class="card" data-url="https://yasuo.xunjiepdf.com/" data-id="151" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/xunjieyasuo.ico" alt="迅捷压缩" class="logo-img" />
+          </div>
+          <div class="card-title">迅捷压缩</div>
+          <div class="card-description">在线图片压缩、PDF压缩、视频压缩免费工具，帮助用户轻松完成文件压缩，保持清晰度，完全免费使用</div>
+        </div>
+        <div class="card" data-url="https://docsmall.com/" data-id="152" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/docsmall.ico" alt="DocSmall" class="logo-img" />
+          </div>
+          <div class="card-title">DocSmall</div>
+          <div class="card-description">完全免费的在线图片与PDF处理工具，支持图片压缩、PDF处理、格式转换等，无需注册，完全免费使用</div>
+        </div>
+        
+        <!-- 多功能工具箱 -->
+        <div class="card" data-url="https://www.dute.org/" data-id="153" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/dute.ico" alt="独特工具箱" class="logo-img" />
+          </div>
+          <div class="card-title">独特工具箱</div>
+          <div class="card-description">专注于体验的免费在线工具集合，提供时间换算、功率换算、CSS三角形生成器等实用工具，完全免费使用</div>
+        </div>
+        <div class="card" data-url="https://www.jiuwa.net/" data-id="154" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/jiuwa.ico" alt="九蛙工具箱" class="logo-img" />
+          </div>
+          <div class="card-title">九蛙工具箱</div>
+          <div class="card-description">实用的在线工具箱，提供文字工具、微信小工具、特殊符号和娱乐小工具等丰富功能，完全免费使用</div>
+        </div>
+        <div class="card" data-url="https://tool.wanlb.com/" data-id="155" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/wanlibao.ico" alt="万利宝工具箱" class="logo-img" />
+          </div>
+          <div class="card-title">万利宝工具箱</div>
+          <div class="card-description">好用的在线工具集合，提供JSON格式化、代码转换、数据处理等开发者常用工具，完全免费使用</div>
+        </div>
+        <div class="card" data-url="https://www.chongbuluo.com/" data-id="156" data-category="超级工具">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/chongbuluo.ico" alt="虫部落" class="logo-img" />
+          </div>
+          <div class="card-title">虫部落</div>
+          <div class="card-description">强大的搜索引擎工具箱，可以查找数据、网页、资源、学术、图片、视频、图书等各种内容，完全免费使用</div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- 软件下载 -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          软件下载
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card" data-url="https://www.ruancang.net/" data-id="144" data-category="软件下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/ruancang.ico" alt="软仓" class="logo-img" />
+          </div>
+          <div class="card-title">软仓</div>
+          <div class="card-description">专业的软件下载平台，提供各类常用软件、Adobe系列软件、CAD设计软件等资源下载</div>
+        </div>
+        <div class="card" data-url="https://www.qijishow.com/down/index.html" data-id="157" data-category="软件下载">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/qijishow.ico" alt="奇迹秀工具箱" class="logo-img" />
+          </div>
+          <div class="card-title">奇迹秀工具箱</div>
+          <div class="card-description">专为设计师打造的工具集合平台，提供设计工具、资源和创意工具，提升设计效率和创作灵感</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 搜索引擎 -->
+    <section class="module">
+      <div class="module-title">
+        搜索引擎
+      </div>
+      <div class="card-grid">
+        <!-- 传统搜索引擎 -->
+        <div class="card" data-url="https://www.baidu.com" data-id="1" data-logo="baidu.png" data-category="搜索引擎">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/baidu.ico" alt="百度" class="logo-img" />
+          </div>
+          <div class="card-title">百度</div>
+          <div class="card-description">中国最大的搜索引擎，提供网页、图片、视频、文库等全方位搜索服务，支持中文语义理解</div>
+        </div>
+        <div class="card" data-url="https://www.google.com" data-id="2" data-logo="google.svg" data-category="搜索引擎">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/google.ico" alt="Google" class="logo-img" />
+          </div>
+          <div class="card-title">Google</div>
+          <div class="card-description">全球领先的搜索引擎，提供精准快速的搜索服务，支持多语言和个性化搜索体验</div>
+        </div>
+        <div class="card" data-url="https://www.bing.com" data-id="3" data-category="搜索引擎">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/bing.ico" alt="Bing" class="logo-img" />
+          </div>
+          <div class="card-title">Bing</div>
+          <div class="card-description">微软开发的搜索引擎，提供智能搜索、图片识别、每日美图等功能，集成AI助手</div>
+        </div>
+        <div class="card" data-url="https://www.duckduckgo.com" data-id="131" data-category="搜索引擎">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/duckduckgo.ico" alt="DuckDuckGo" class="logo-img" />
+          </div>
+          <div class="card-title">DuckDuckGo</div>
+          <div class="card-description">注重隐私保护的搜索引擎，不追踪用户行为，提供匿名搜索体验，支持即时答案</div>
+        </div>
+        <div class="card" data-url="https://www.qwant.com" data-id="138" data-category="搜索引擎">
+          <div class="card-icon">
+            <img src="assets/logos/favicons/qwant.ico" alt="Qwant" class="logo-img" />
+          </div>
+          <div class="card-title">Qwant</div>
+          <div class="card-description">法国隐私保护搜索引擎，不记录用户数据，提供中立的搜索结果，支持欧洲多语言</div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+
+
+  <!-- 免责声明 -->
+  <section class="disclaimer">
+    <div class="disclaimer-container">
+      <h3>温馨提示</h3>
+      <p>本站致力于为用户提供便捷的网站导航服务，所有链接均来自用户分享或公开渠道。请注意，我们无法对第三方网站的内容、安全性和合法性进行实时监控。</p>
+      <p>当您通过本站链接访问其他网站时，请务必注意网络安全，保护好个人信息，并遵守相关法律法规。</p>
+      <p>如遇到版权、隐私等法律问题，建议您直接与相关网站联系。我们会尽力维护良好的网络环境，但无法对第三方内容承担法律责任。</p>
+      <p>为了持续优化服务体验，我们可能会对网站功能进行调整。感谢您的理解与支持，希望本站能为您带来愉快的使用体验。</p>
+    </div>
+  </section>
+
+  <!-- 底部状态栏 -->
+  <div class="footer-bar">
+    © 2025 栖光集 | 一个安静的角落，只为懂它的人。
+  </div>
+
+  <!-- 外部 JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>
